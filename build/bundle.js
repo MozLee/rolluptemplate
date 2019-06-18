@@ -1,2 +1,82 @@
-!function(n){"function"==typeof define&&define.amd?define(n):n()}(function(){"use strict";function u(n,e,t,o,r,i,c){try{var u=n[i](c),s=u.value}catch(n){return void t(n)}u.done?e(s):Promise.resolve(s).then(o,r)}console.log("hello word"),console.log("gggg");function o(t){return new Promise(function(n,e){setTimeout(function(){n(t)},3e3)})}var s;s=regeneratorRuntime.mark(function n(){var e,t;return regeneratorRuntime.wrap(function(n){for(;;)switch(n.prev=n.next){case 0:return n.next=2,o("lixin");case 2:return e=n.sent,n.next=5,o("ddddd");case 5:t=n.sent,console.log(e,t);case 7:case"end":return n.stop()}},n)}),function(){var n=this,c=arguments;new Promise(function(e,t){var o=s.apply(n,c);function r(n){u(o,e,t,r,i,"next",n)}function i(n){u(o,e,t,r,i,"throw",n)}r(void 0)})}()});
+(function (factory) {
+  typeof define === 'function' && define.amd ? define(factory) :
+  factory();
+}(function () { 'use strict';
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+      var info = gen[key](arg);
+      var value = info.value;
+    } catch (error) {
+      reject(error);
+      return;
+    }
+
+    if (info.done) {
+      resolve(value);
+    } else {
+      Promise.resolve(value).then(_next, _throw);
+    }
+  }
+
+  function _asyncToGenerator(fn) {
+    return function () {
+      var self = this,
+          args = arguments;
+      return new Promise(function (resolve, reject) {
+        var gen = fn.apply(self, args);
+
+        function _next(value) {
+          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+        }
+
+        function _throw(err) {
+          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+        }
+
+        _next(undefined);
+      });
+    };
+  }
+
+  console.log("hello word");
+  console.log("gggg");
+
+  var getName = function getName(name) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        resolve(name);
+      }, 3000);
+    });
+  };
+
+  _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee() {
+    var a, b;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return getName('lixin');
+
+          case 2:
+            a = _context.sent;
+            _context.next = 5;
+            return getName('ddddd');
+
+          case 5:
+            b = _context.sent;
+            console.log(a, b);
+
+          case 7:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }))();
+
+}));
 //# sourceMappingURL=bundle.js.map

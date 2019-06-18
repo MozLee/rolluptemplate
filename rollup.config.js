@@ -14,7 +14,7 @@ export default [
         exclude: 'node_modules/**',
         runtimeHelpers: true
       }),
-      uglify()
+      process.env.NODE_ENV === 'production' && uglify()
     ]
   }
 ]
